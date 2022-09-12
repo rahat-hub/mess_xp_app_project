@@ -39,6 +39,11 @@ dev_dependencies:
       url: https://github.com/monkeydaichan/flutter_device_preview.git
       path: device_preview
       ref: master
+  flutter_launcher_icons: ^0.10.0
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/chess_king_icon.svg"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

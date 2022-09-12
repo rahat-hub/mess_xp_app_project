@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:mess_xp_app_project/modules/registration/registration_view.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class LoginPageMobilePortrait extends StatelessWidget {
@@ -12,6 +14,7 @@ class LoginPageMobilePortrait extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //const String MESSXP = 'assets/messxp.svg';
+    final CheckController ctrl = Get.put(CheckController());
 
     return Scaffold(
       backgroundColor: Color(0xff5E4949),
@@ -36,7 +39,7 @@ class LoginPageMobilePortrait extends StatelessWidget {
                 ),
                 labelText: "Email",
                 labelStyle: const TextStyle(
-                    color: Colors.blue,
+                    color: Colors.white,
                     fontSize: 24.0
                 ),
               ),
@@ -61,7 +64,7 @@ class LoginPageMobilePortrait extends StatelessWidget {
                 labelText: "Password",
                 labelStyle: const TextStyle(
                     color: Colors.white,
-                    fontSize: 24.0
+                    fontSize: 24.0,
                 ),
               ),
               keyboardType: TextInputType.visiblePassword,
@@ -80,7 +83,78 @@ class LoginPageMobilePortrait extends StatelessWidget {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                const SizedBox(width: 20,),
+                Obx(() =>
+                    Checkbox(
+                        checkColor: Colors.white,
+                        activeColor: Color(0xffF2C94C),
+                        shape: const CircleBorder(),
+                        value: ctrl.checkBool1.value,
+                        onChanged: (value){
+                          ctrl.checkBool1.value = !ctrl.checkBool1.value;
+                        }
+                    ),
+                ),
+                SvgPicture.asset('assets/chess_king_icon.svg'),
+                const SizedBox(width: 10,),
+                const Text("Manager",style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+                ),
+                SizedBox(width: 50,),
+                Obx(() =>
+                    Checkbox(
 
+                        shape: const CircleBorder(
+                          side: BorderSide(color: Colors.white),
+                        ),
+                        value: ctrl.checkBool2.value,
+                        onChanged: (value){
+                          ctrl.checkBool2.value = !ctrl.checkBool2.value;
+
+                        }
+                    ),
+                ),
+                const SizedBox(width: 10,),
+                SvgPicture.asset('assets/solid_user_icon.svg'),
+                const SizedBox(width: 10,),
+                const Text("Mamber",style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20,),
+          MaterialButton(
+            minWidth: double.infinity,
+            height: 60,
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterPage(
+
+              ))
+              );
+            },
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(
+                color:  Colors.black,
+              ),
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: const Text(
+              'Login',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 18,
+              ),
+            ),
+          )
         ],
       )
     );
@@ -97,6 +171,10 @@ class LoginPageMobileLandscape extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container();
   }
+}
+class CheckController extends GetxController{
+  var checkBool1 = false.obs;
+  var checkBool2 = false.obs;
 }
 
 /*Column(
