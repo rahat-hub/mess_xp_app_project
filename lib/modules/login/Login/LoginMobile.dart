@@ -36,7 +36,7 @@ class LoginPageMobilePortrait extends StatelessWidget {
                 ),
                 labelText: "Email",
                 labelStyle: const TextStyle(
-                    color: Colors.white,
+                    color: Colors.blue,
                     fontSize: 24.0
                 ),
               ),
