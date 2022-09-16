@@ -1,28 +1,35 @@
 import 'package:get/get.dart';
-import 'package:mess_xp_app_project/modules/login/login_binding.dart';
-import 'package:mess_xp_app_project/modules/registration/registration_view.dart';
-import 'package:mess_xp_app_project/routes/app_pages.dart';
-
+import '../modules/dashboard/dashboard_binding.dart';
+import '../modules/dashboard/dashboard_view.dart';
+import '../modules/login/login_binding.dart';
 import '../modules/login/login_view.dart';
 import '../modules/registration/registration_binding.dart';
+import '../modules/registration/registration_view.dart';
+import 'app_pages.dart';
 
 class AppRoutes{
-  static const INITIAL = AppPages.LOGIN;
+  static final INITIAL =AppPages.LOGIN;
   static final routes = [
     GetPage(
-        name: AppPages.LOGIN,
-        page: () => LoginPage(),
-        bindings: [
-          LoginBinding(),
-        ],
+      name: AppPages.LOGIN,
+      page: () => const LoginPage(),
+      bindings: [
+        LoginBinding(),
+      ],
     ),
     GetPage(
         name: AppPages.REGISTRATION,
-        page: () => RegisterPage(),
+        page: () => const RegisterPage(),
         bindings: [
           RegistrationBinding(),
         ]
     ),
-
+    GetPage(
+        name: AppPages.DASHBOARD,
+        page: () => const DashboardPage(),
+        bindings: [
+          DashboardBinding(),
+        ]
+    ),
   ];
 }
