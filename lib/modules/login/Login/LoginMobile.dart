@@ -4,9 +4,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mess_xp_app_project/modules/dashboard/dashboard_view.dart';
 import 'package:mess_xp_app_project/modules/registration/registration_view.dart';
+import 'package:mess_xp_app_project/routes/app_pages.dart';
+import 'package:mess_xp_app_project/routes/app_routes.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class LoginPageMobilePortrait extends StatelessWidget {
+import '../login_logic.dart';
+
+class LoginPageMobilePortrait extends GetView<LoginLogic> {
   final SizingInformation? sizingInformation;
 
   const LoginPageMobilePortrait({Key? key, this.sizingInformation})
@@ -15,7 +19,8 @@ class LoginPageMobilePortrait extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //const String MESSXP = 'assets/messxp.svg';
-    final CheckController ctrl = Get.put(CheckController());
+    Get.find<LoginLogic>();
+    //final CheckController ctrl = Get.put(CheckController());
 
     return Scaffold(
         backgroundColor: Color(0xff5E4949),
@@ -127,11 +132,11 @@ class LoginPageMobilePortrait extends StatelessWidget {
                           shape: const CircleBorder(
                               side: BorderSide(color: Color(0xffF2C94C))
                           ),
-                          value: ctrl.checkBool1.value,
+                          value: controller.checkBool1.value,
                           onChanged: (value){
-                            ctrl.checkBool1.value = !ctrl.checkBool1.value;
-                            if(ctrl.checkBool2 != false.obs){
-                              ctrl.checkBool1.value = !ctrl.checkBool1.value;
+                            controller.checkBool1.value = !controller.checkBool1.value;
+                            if(controller.checkBool2 != false.obs){
+                              controller.checkBool1.value = !controller.checkBool1.value;
                             }
                           }
                       ),
@@ -151,11 +156,11 @@ class LoginPageMobilePortrait extends StatelessWidget {
                           shape: const CircleBorder(
                               side: BorderSide(color: Color(0xffF2C94C))
                           ),
-                          value: ctrl.checkBool2.value,
+                          value: controller.checkBool2.value,
                           onChanged: (value){
-                            ctrl.checkBool2.value = !ctrl.checkBool2.value;
-                            if(ctrl.checkBool1 != false.obs){
-                              ctrl.checkBool2.value = !ctrl.checkBool2.value;
+                            controller.checkBool2.value = !controller.checkBool2.value;
+                            if(controller.checkBool1 != false.obs){
+                              controller.checkBool2.value = !controller.checkBool2.value;
                             }
                           }
                       ),
@@ -178,8 +183,8 @@ class LoginPageMobilePortrait extends StatelessWidget {
                 minWidth: double.infinity,
                 height: 60,
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const DashboardPage())
-                  );
+                  Get.offAllNamed(AppPages.DASHBOARD);
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => const DashboardPage())
                 },
                 color: Color(0xffF2C94C),
                 shape: RoundedRectangleBorder(
@@ -217,7 +222,8 @@ class LoginPageMobilePortrait extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterPage()));
+                    Get.toNamed(AppPages.REGISTRATION);
+                    //Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterPage()));
                   },
                   child: const Padding(
                     padding: EdgeInsets.all(0.0),
@@ -256,10 +262,6 @@ class LoginPageMobileLandscape extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container();
   }
-}
-class CheckController extends GetxController{
-  var checkBool1 = false.obs;
-  var checkBool2 = false.obs;
 }
 /*
                     Obx(() =>

@@ -6,14 +6,15 @@ import 'package:get/get_utils/src/get_utils/get_utils.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../login/login_view.dart';
+import '../registration_logic.dart';
 
-class RegisterPageMobilePortrait extends StatelessWidget {
+class RegisterPageMobilePortrait extends GetView<RegistrationLogic> {
   final SizingInformation? sizingInformation;
   const RegisterPageMobilePortrait({Key? key, this.sizingInformation}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //Get.find<RegisterLogic>();
+    Get.find<RegistrationLogic>();
     return Scaffold(
       backgroundColor: Color(0xff5E4949),
       body: ListView(
